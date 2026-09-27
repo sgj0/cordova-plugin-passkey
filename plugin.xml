@@ -13,7 +13,7 @@
 	<engines>
 		<engine name="cordova" version=">=3.0.0" />
 	</engines>
-    <js-module src="www/passkey.js" name="Passkey">
+    <js-module src="www/android/passkey.js" name="Passkey">
         <climb target="window.plugins.passkey" />
     </js-module>
 
