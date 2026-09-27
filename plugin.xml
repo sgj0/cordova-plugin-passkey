@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin
-  id="cordova-plugin-passkey"
-  version="0.1.0"
-  xmlns="http://apache.org/ns/cordova/plugins/1.0"
+	xmlns="http://www.phonegap.com/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    id="net.sgj0.cordova.plugin.passkey"
+    version="0.1.0"
 >
     <name>PasskeyPlugin</name>
 	<description>Cordova Plugin for Android to use Passkey</description>
@@ -13,10 +14,6 @@
 	<engines>
 		<engine name="cordova" version=">=3.0.0" />
 	</engines>
-    <js-module src="www/android/passkey.js" name="Passkey">
-        <climb target="window.plugins.passkey" />
-    </js-module>
-
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="PasskeyPlugin">
@@ -26,6 +23,9 @@
 				/>
             </feature>
         </config-file>
+        <js-module src="www/android/passkey.js" name="Passkey">
+            <climb target="window.plugins.passkey" />
+        </js-module>
         
         <source-file
 			src="src/android/PasskeyPlugin.kt"
