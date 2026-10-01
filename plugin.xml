@@ -24,7 +24,7 @@
             </feature>
         </config-file>
         <js-module src="www/android/passkey.js" name="Passkey">
-            <climb target="window.plugins.passkey" />
+			<clobbers target="cordova.plugins.passkey" />
         </js-module>
         
         <source-file
