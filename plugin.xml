@@ -11,10 +11,15 @@
 	<repo>https://github.com/sgj0/cordova-plugin-passkey</repo>
 	<issue>https://github.com/sgj0/cordova-plugin-passkey/issues</issue>
 	<keywords>cordova,passkey,android</keywords>
+
 	<engines>
 		<engine name="cordova" version=">=3.0.0" />
 	</engines>
+
     <platform name="android">
+		<preference name="GradlePluginKotlinEnabled" value="true" />
+    	<preference name="GradlePluginKotlinVersion" value="1.9.20" />
+
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="PasskeyPlugin">
                 <param
@@ -23,6 +28,7 @@
 				/>
             </feature>
         </config-file>
+
         <js-module src="www/android/passkey.js" name="Passkey">
 			<clobbers target="cordova.plugins.passkey" />
         </js-module>
