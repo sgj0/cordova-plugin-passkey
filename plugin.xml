@@ -1,46 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin
-	xmlns="http://www.phonegap.com/ns/plugins/1.0"
-	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     id="net.sgj0.cordova.plugin.passkey"
     version="0.1.0"
 >
     <name>PasskeyPlugin</name>
-	<description>Cordova Plugin for Android to use Passkey</description>
-	<license>MIT</license>
-	<repo>https://github.com/sgj0/cordova-plugin-passkey</repo>
-	<issue>https://github.com/sgj0/cordova-plugin-passkey/issues</issue>
-	<keywords>cordova,passkey,android</keywords>
-
-	<engines>
-		<engine name="cordova" version=">=3.0.0" />
-	</engines>
-
-	<preference name="GradlePluginKotlinEnabled" value="true" />
-	<preference name="GradlePluginKotlinVersion" value="1.9.20" />
-
+    <description>Cordova Plugin for Android to use Passkey</description>
+    <license>MIT</license>
+    <repo>https://github.com/sgj0/cordova-plugin-passkey</repo>
+    <issue>https://github.com/sgj0/cordova-plugin-passkey/issues</issue>
+    <keywords>cordova,passkey,android</keywords>
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="PasskeyPlugin">
                 <param
-					name="android-package"
-					value="net.sgj0.cordova.plugin.passkey.PasskeyPlugin"
-				/>
+                    name="android-package"
+                    value="net.sgj0.cordova.plugin.passkey.PasskeyPlugin"
+                />
             </feature>
         </config-file>
-
         <js-module src="www/android/passkey.js" name="Passkey">
-			<clobbers target="cordova.plugins.passkey" />
+            <clobbers target="cordova.plugins.passkey" />
         </js-module>
-        
+
         <source-file
-			src="src/android/PasskeyPlugin.kt"
-			target-dir="src/net/sgj0/cordova/plugin/passkey"
+            src="src/android/PasskeyPlugin.java"
+            target-dir="src/net/sgj0.cordova.plugin.passkey"
         />
-        
+
         <framework src="androidx.credentials:credentials:1.3.0" />
         <framework
-			src="androidx.credentials:credentials-play-services-auth:1.3.0"
-		/>
+            src="androidx.credentials:credentials-play-services-auth:1.3.0"
+        />
     </platform>
 </plugin>
