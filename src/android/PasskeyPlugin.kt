@@ -18,6 +18,8 @@ import kotlinx.coroutines.launch
 class PasskeyPlugin : CordovaPlugin() {
 
     override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
+        Log.d("PasskeyPlugin", "Called with options: " + args);
+
         if (action == "getPasskey") {
             val requestJson = args.getString(0)
             getPasskey(requestJson, callbackContext)
@@ -45,9 +47,12 @@ class PasskeyPlugin : CordovaPlugin() {
                     callbackContext.error("Type d'identifiant non priIntentPlugin.javas en charge.")
                 }
             } catch (e: GetCredentialException) {
-                Log.e("PasskeyPlugin", "Erreur Credential Manager", e)
+                Log.d("PasskeyPlugin", e.getMessage());
+                Log.d("PasskeyPlugin", Arrays.toString(e.getStackTrace()));
                 callbackContext.error(e.message ?: "Erreur inconnue lors de l'authentification par Passkey.")
             } catch (e: Exception) {
+                Log.d("PasskeyPlugin", e.getMessage());
+                Log.d("PasskeyPlugin", Arrays.toString(e.getStackTrace()));
                 callbackContext.error(e.message)
             }
         }
