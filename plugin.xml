@@ -16,10 +16,10 @@
 		<engine name="cordova" version=">=3.0.0" />
 	</engines>
 
-    <platform name="android">
-		<preference name="GradlePluginKotlinEnabled" value="true" />
-    	<preference name="GradlePluginKotlinVersion" value="1.9.20" />
+	<preference name="GradlePluginKotlinEnabled" value="true" />
+	<preference name="GradlePluginKotlinVersion" value="1.9.20" />
 
+    <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="PasskeyPlugin">
                 <param
