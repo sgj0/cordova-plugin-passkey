@@ -19,7 +19,7 @@
             <feature name="PasskeyPlugin">
                 <param
 					name="android-package"
-					value="net.sgj0.cordova.plugin.PasskeyPlugin"
+					value="net.sgj0.cordova.plugin.passkey.PasskeyPlugin"
 				/>
             </feature>
         </config-file>
