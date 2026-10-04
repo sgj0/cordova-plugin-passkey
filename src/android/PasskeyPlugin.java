@@ -2,13 +2,13 @@ package net.sgj0.cordova.plugin.passkey;
 
 import android.app.Activity;
 import android.os.CancellationSignal;
-import android.os.OutcomeReceiver;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.credentials.Credential;
 import androidx.credentials.CredentialManager;
+import androidx.credentials.CredentialManagerCallback;
 import androidx.credentials.GetCredentialRequest;
 import androidx.credentials.GetCredentialResponse;
 import androidx.credentials.GetPublicKeyCredentialOption;
@@ -58,7 +58,7 @@ public class PasskeyPlugin extends CordovaPlugin {
                     request,
                     cancellationSignal,
                     mainExecutor,
-                    new OutcomeReceiver<GetCredentialResponse, GetCredentialException>() {
+                    new CredentialManagerCallback<GetCredentialResponse, GetCredentialException>() {
                         @Override
                         public void onResult(GetCredentialResponse result) {
                             Credential credential = result.getCredential();

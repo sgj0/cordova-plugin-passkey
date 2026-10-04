@@ -23,14 +23,15 @@
                 />
             </feature>
         </config-file>
+
         <js-module src="www/android/passkey.js" name="Passkey">
             <clobbers target="cordova.plugins.passkey" />
         </js-module>
 
-        <source-file
-            src="src/android/PasskeyPlugin.java"
-            target-dir="src/net/sgj0.cordova.plugin.passkey"
-        />
+		<source-file
+			src="src/android/PasskeyPlugin.java"
+			target-dir="src/net/sgj0/cordova/plugin/passkey"
+		/>
 
         <framework src="androidx.credentials:credentials:1.3.0" />
         <framework
