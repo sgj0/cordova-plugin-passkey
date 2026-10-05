@@ -6,4 +6,10 @@ module.exports = {
       options,
     ]);
   },
+
+  createPasskey: (options, successCallback, errorCallback) => {
+    exec(successCallback, errorCallback, "PasskeyPlugin", "createPasskey", [
+      options,
+    ]);
+  },
 };

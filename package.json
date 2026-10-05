@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-passkey",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Cordova Plugin for Android to use Passkey",
   "cordova": {
     "id": "net.sgj0.cordova.plugin.passkey",
