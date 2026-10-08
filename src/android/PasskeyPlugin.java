@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.os.CancellationSignal;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.credentials.Credential;
-import androidx.credentials.CredentialManager;
-import androidx.credentials.CredentialManagerCallback;
 import androidx.credentials.CreateCredentialResponse;
 import androidx.credentials.CreatePublicKeyCredentialRequest;
 import androidx.credentials.CreatePublicKeyCredentialResponse;
+import androidx.credentials.Credential;
+import androidx.credentials.CredentialManager;
+import androidx.credentials.CredentialManagerCallback;
 import androidx.credentials.GetCredentialRequest;
 import androidx.credentials.GetCredentialResponse;
 import androidx.credentials.GetPublicKeyCredentialOption;
@@ -99,7 +99,10 @@ public class PasskeyPlugin extends CordovaPlugin {
     }
   }
 
-  private void createPasskey(String requestJson, CallbackContext callbackContext) {
+  private void createPasskey(
+    String requestJson,
+    CallbackContext callbackContext
+  ) {
     Activity activity = this.cordova.getActivity();
 
     try {
@@ -123,10 +126,12 @@ public class PasskeyPlugin extends CordovaPlugin {
           public void onResult(CreateCredentialResponse result) {
             if (result instanceof CreatePublicKeyCredentialResponse) {
               try {
-                String registrationResponseJson =
-                  ((CreatePublicKeyCredentialResponse) result)
-                    .getRegistrationResponseJson();
-                callbackContext.success(new JSONObject(registrationResponseJson));
+                String registrationResponseJson = (
+                  (CreatePublicKeyCredentialResponse) result
+                ).getRegistrationResponseJson();
+                callbackContext.success(
+                  new JSONObject(registrationResponseJson)
+                );
               } catch (JSONException e) {
                 callbackContext.error(
                   "Erreur de parsing JSON: " + e.getMessage()
@@ -139,7 +144,9 @@ public class PasskeyPlugin extends CordovaPlugin {
 
           @Override
           public void onError(@NonNull CreateCredentialException e) {
-            callbackContext.error("CreateCredentialException: " + e.getMessage());
+            callbackContext.error(
+              "CreateCredentialException: " + e.getMessage()
+            );
           }
         }
       );
