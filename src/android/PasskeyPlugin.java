@@ -2,7 +2,6 @@ package net.sgj0.cordova.plugin.passkey;
 
 import android.app.Activity;
 import android.os.CancellationSignal;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.credentials.Credential;
@@ -34,8 +33,6 @@ public class PasskeyPlugin extends CordovaPlugin {
     JSONArray args,
     CallbackContext callbackContext
   ) throws JSONException {
-    Log.d(TAG, "Called action: " + action + " with options: " + args);
-
     if ("getPasskey".equals(action)) {
       String requestJson = args.getString(0);
       getPasskey(requestJson, callbackContext);
@@ -82,7 +79,6 @@ public class PasskeyPlugin extends CordovaPlugin {
                 ).getAuthenticationResponseJson();
                 callbackContext.success(new JSONObject(authResponseJson));
               } catch (JSONException e) {
-                Log.e(TAG, "Erreur JSON: " + e.getMessage(), e);
                 callbackContext.error(
                   "Erreur de parsing JSON: " + e.getMessage()
                 );
@@ -94,17 +90,11 @@ public class PasskeyPlugin extends CordovaPlugin {
 
           @Override
           public void onError(@NonNull GetCredentialException e) {
-            Log.e(TAG, "GetCredentialException: " + e.getMessage(), e);
-            callbackContext.error(
-              e.getMessage() != null
-                ? e.getMessage()
-                : "Erreur inconnue lors de l'authentification par Passkey."
-            );
+            callbackContext.error("GetCredentialException: " + e.getMessage());
           }
         }
       );
     } catch (Exception e) {
-      Log.e(TAG, "Exception: " + e.getMessage(), e);
       callbackContext.error(e.getMessage());
     }
   }
@@ -138,7 +128,6 @@ public class PasskeyPlugin extends CordovaPlugin {
                     .getRegistrationResponseJson();
                 callbackContext.success(new JSONObject(registrationResponseJson));
               } catch (JSONException e) {
-                Log.e(TAG, "Erreur JSON création: " + e.getMessage(), e);
                 callbackContext.error(
                   "Erreur de parsing JSON: " + e.getMessage()
                 );
@@ -150,17 +139,11 @@ public class PasskeyPlugin extends CordovaPlugin {
 
           @Override
           public void onError(@NonNull CreateCredentialException e) {
-            Log.e(TAG, "CreateCredentialException: " + e.getMessage(), e);
-            callbackContext.error(
-              e.getMessage() != null
-                ? e.getMessage()
-                : "Erreur inconnue lors de la création du Passkey."
-            );
+            callbackContext.error("CreateCredentialException: " + e.getMessage());
           }
         }
       );
     } catch (Exception e) {
-      Log.e(TAG, "Exception: " + e.getMessage(), e);
       callbackContext.error(e.getMessage());
     }
   }
