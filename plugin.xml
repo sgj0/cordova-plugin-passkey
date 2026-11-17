@@ -3,7 +3,7 @@
     xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="net.sgj0.cordova.plugin.passkey"
-    version="0.2.0"
+    version="0.3.0"
 >
     <name>PasskeyPlugin</name>
     <description>Cordova Plugin for Android to use Passkey</description>
@@ -12,7 +12,9 @@
     <issue>https://github.com/sgj0/cordova-plugin-passkey/issues</issue>
     <keywords>cordova,passkey,android</keywords>
     <engines>
-        <engine name="cordova" version=">=3.0.0" />
+        <engine name="cordova" version=">=10.0.0" />
+        <!-- androidx.credentials 1.3.x requires compileSdk 34 -->
+        <engine name="cordova-android" version=">=13.0.0" />
     </engines>
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -28,10 +30,10 @@
             <clobbers target="cordova.plugins.passkey" />
         </js-module>
 
-		<source-file
-			src="src/android/PasskeyPlugin.java"
-			target-dir="src/net/sgj0/cordova/plugin/passkey"
-		/>
+        <source-file
+            src="src/android/PasskeyPlugin.java"
+            target-dir="src/net/sgj0/cordova/plugin/passkey"
+        />
 
         <framework src="androidx.credentials:credentials:1.3.0" />
         <framework
